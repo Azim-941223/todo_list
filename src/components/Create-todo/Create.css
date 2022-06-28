@@ -1,0 +1,11 @@
+form{
+    display: flex;
+}
+
+.btn{
+    height: 8vh;
+    width: 25%;
+}
+.form-control{
+    height: 8vh;
+}

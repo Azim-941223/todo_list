@@ -1,0 +1,31 @@
+.info{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info:nth-child(2n){
+    background-color: rgb(219, 215, 215);
+}
+.info_label{
+    display: flex;
+}
+.info_input{
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.btns{
+    display: flex;
+    width: 30%;
+}
+
+.btns .btn {
+    width: 100%;
+    height: 100%;
+    margin-right: 5%;
+}
+
+.checked{
+    text-decoration: line-through;
+}
