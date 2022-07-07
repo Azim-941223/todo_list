@@ -20,3 +20,8 @@
   width: 40%;
   margin-left: 28%;
 }
+@media(max-width:768px) {
+    .App{
+      width: 95%;
+    }
+}
