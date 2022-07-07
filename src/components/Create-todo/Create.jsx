@@ -1,10 +1,24 @@
 import './Create.css'
+import { useState } from 'react'
 
-export function Create(){
+
+export function Create(props){
+
+    const [inputValue, setInputValue] = useState('')
+
+    const submit = (event) =>{
+        event.preventDefault();
+        props.addNew(inputValue)
+        setInputValue('')
+    } //preventDefault это проедотвращает перезагрузку сайта(по умолчанию form обнавляется автоматически)
+
+    const handleChange = (event) => {setInputValue(event.target.value)}
+
     return(
-        <form className="input">
-            <input type="text" className="form-control" placeholder="Enter todo here"/>
-            <button type="button" className="btn btn-primary">Submit</button>
+        <form className="input" onSubmit={submit}>
+            <input value={inputValue} onChange={handleChange} type="text" 
+            className="form-control" placeholder="Enter todo here" required/>
+            <button type="submit" value={submit} className="btn btn-primary">Submit</button>
         </form>
 )
 }
