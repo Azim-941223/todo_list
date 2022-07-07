@@ -8,9 +8,11 @@ import {Info} from './components/Info-todo/Info'
 function App() {
   const todoArr = JSON.parse(localStorage.getItem('todo')) || []
   const [state, setState] = useState(todoArr)
-  // const[info, setInfo] = useState('')
+  const[isPanding, setPending] = useState(true)
 
   useEffect(() => {localStorage.setItem('todo', JSON.stringify(state))},[state]);
+
+  useEffect(() =>{setTimeout(() => {setPending(false)},3000)}, [])
 
 
   const addNewTodo = (str) => {
@@ -39,6 +41,10 @@ function App() {
     setState(addNew)
   }
 
+
+  if(isPanding) {
+    return <div className='load'><img src='https://c.tenor.com/zecVkmevzcIAAAAM/please-wait.gif' alt='preloader'/></div>
+  }
   return (
     <div className="App">
       <Header state={state}/>
@@ -46,7 +52,7 @@ function App() {
           <Create addNew={addNewTodo}/>
         <div className='todo_wrapper'>
           {state.length ? <div> 
-            {state.map((item) => <Info text = {item.text} checked={item.checked} id={item.id} onDelete={deleteTodo} onCheck={onCheck} isEdit={isEdit}/>)
+            {state.map((item) => <Info key={item.id} text = {item.text} checked={item.checked} id={item.id} onDelete={deleteTodo} onCheck={onCheck} isEdit={isEdit}/>)
             }
           </div> : <h3 className='text'>Please add Todo</h3>}
         </div>

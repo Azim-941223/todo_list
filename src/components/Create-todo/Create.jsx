@@ -18,7 +18,7 @@ export function Create(props){
         <form className="input" onSubmit={submit}>
             <input value={inputValue} onChange={handleChange} type="text" 
             className="form-control" placeholder="Enter todo here" required/>
-            <button type="submit" value={submit} className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
 )
 }
