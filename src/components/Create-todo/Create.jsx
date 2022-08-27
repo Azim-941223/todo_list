@@ -1,14 +1,17 @@
 import './Create.css'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { todoAction } from '../../store/todoSlice';
 
 
-export function Create(props){
+export function Create(){
 
+    const dispatch = useDispatch()
     const [inputValue, setInputValue] = useState('')
 
     const submit = (event) =>{
         event.preventDefault();
-        props.addNew(inputValue)
+        dispatch(todoAction.addTodo(inputValue))
         setInputValue('')
     } //preventDefault это проедотвращает перезагрузку сайта(по умолчанию form обнавляется автоматически)
 

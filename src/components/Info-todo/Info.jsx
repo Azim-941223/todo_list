@@ -1,23 +1,29 @@
 import './Info.css'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { todoAction } from '../../store/todoSlice';
 // props it's object
 
 export const Info = (props) => {
     const [isEdit, setIsEdit] = useState(false)
     const [editValue, setEditValue] = useState(props.text)
+    const dispatch = useDispatch
 
     const onDelete = () => {
-        props.onDelete(props.id)
+        dispatch(todoAction.deleteTodo(props.id))
     }
     const handleCheck = () => {
-        props.onCheck(props.id)
+        dispatch(todoAction.checkTodo(props.id))
     }
     const editInp = () => {
         setIsEdit(!isEdit)
     }
     const editSubmit = (event) => {
         event.preventDefault();
-        props.isEdit(editValue, props.id);
+        dispatch(todoAction.editTodo({
+            id: props.id,
+            text: editValue,
+        }))
         setIsEdit(false)
     }
     return (
